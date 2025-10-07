@@ -1,0 +1,14 @@
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+.tools {
+    padding: 1rem;
+}
+
+#canvas {
+    border: 1px solid black;
+}
