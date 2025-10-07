@@ -1,9 +1,26 @@
+import orImg from './images/or.png';
+import andImg from './images/and.png';
+
 const canvas = document.getElementById('canvas') as HTMLCanvasElement;
 const ctx = canvas.getContext('2d')!
 
-ctx.fillStyle = 'rgb(200, 3, 230)';
-ctx.beginPath();
-ctx.moveTo(100, 100);
-ctx.lineTo(200, 100)
-ctx.lineTo(150, 200)
-ctx.fill();
+function loadImage(imgPath: string): Promise<HTMLImageElement> {
+    return new Promise((resolve, reject) => {
+        const img = new Image();
+        img.addEventListener('load', () => resolve(img));
+        img.addEventListener('error', reject);
+        img.src = imgPath;
+    });
+}
+
+async function main() {
+    const or = await loadImage(orImg);
+    const and = await loadImage(andImg)
+    
+    ctx.rotate(Math.PI / 180 * 15);
+    ctx.translate(250, 0);
+    ctx.drawImage(or, 0, 0, 120, 120);
+    ctx.drawImage(and, 150, 0, 120, 120);
+}
+
+main();
