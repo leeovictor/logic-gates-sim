@@ -1,7 +1,11 @@
--   configurar canvas
+[x] configurar canvas
 
--   definir como será feita a simulação das portas logicas (tick? instantanea? propagação de sinal?)
+[ ] modelo de dados
 
--   adicionar e remover portas logicas
--   conectar portas lógicas
--   visualizar resultados do circuito
+* circuit
+  * input signal
+  * output signal
+  * wire
+  * logic port (and, or, not)
+
+* simulate circuit

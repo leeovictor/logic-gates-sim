@@ -15,8 +15,8 @@ function loadImage(imgPath: string): Promise<HTMLImageElement> {
 }
 
 async function main() {
-    const or = await loadImage(orImg);
     const and = await loadImage(andImg);
+    const or = await loadImage(orImg);
 
     ctx.translate(250, 200);
     ctx.drawImage(or, 0, 0, 120, 120);
