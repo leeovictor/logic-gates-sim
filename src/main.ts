@@ -1,6 +1,7 @@
 import './style.css';
 import orImg from './images/or.png';
 import andImg from './images/and.png';
+import './core';
 
 const canvas = document.getElementById('canvas') as HTMLCanvasElement;
 const ctx = canvas.getContext('2d')!;
