@@ -59,8 +59,7 @@ class Wire {
     }
 }
 
-// build circuit
-// components
+// build circuit components
 const inPinA = new InputPin();
 const inPinB = new InputPin();
 
@@ -72,7 +71,7 @@ const outWire = new Wire();
 
 const outPin = new OutputPin();
 
-// connections
+// make connections
 inPinA.connectedTo = wirea;
 inPinB.connectedTo = wireb;
 
@@ -99,3 +98,8 @@ and.propagateSignal();
 
 outWire.propagateSignal();
 outPin.printValue();
+
+// TODO: evaluate circuit algorithm test
+// start with the input pins and propagate the signal to the connected components
+// get all connected components and propagate their signals, repeating the process until there are no more components to propagate (reach the output pins)
+// ATTENTION: this does not account for scenarios with loops (e.g., flip-flop)
