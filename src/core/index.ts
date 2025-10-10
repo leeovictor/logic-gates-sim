@@ -98,7 +98,15 @@ and.propagateSignal();
 
 outWire.propagateSignal();
 outPin.printValue();
+class Circuit {
+    inputPins: InputPin[] = [];
+    outputPins: OutputPin[] = [];
+    components: (AndGate | Wire)[] = [];
 
+    evaluate() {
+        // TODO
+    }
+}
 // TODO: evaluate circuit algorithm test
 // start with the input pins and propagate the signal to the connected components
 // get all connected components and propagate their signals, repeating the process until there are no more components to propagate (reach the output pins)
