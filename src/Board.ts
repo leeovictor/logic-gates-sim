@@ -1,17 +1,24 @@
-import { Line } from './Line';
-import type { Point } from './Point';
+import { Line, LineDrawer } from './Line';
 
 export class Board {
     lines: Line[] = [];
+    lineDrawer: LineDrawer;
 
-    draw(ctx: CanvasRenderingContext2D) {
+    constructor(ctx: CanvasRenderingContext2D) {
+        this.lineDrawer = new LineDrawer(ctx);
+    }
+
+    draw() {
         for (const line of this.lines) {
-            line.draw(ctx);
+            this.lineDrawer.draw(line);
         }
     }
 
-    createLine(start: Point, end: Point) {
-        const line = new Line(start, end);
+    getLineDrawer() {
+        return this.lineDrawer;
+    }
+
+    addLine(line: Line) {
         this.lines.push(line);
     }
 }
