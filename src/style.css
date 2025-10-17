@@ -5,8 +5,14 @@ body {
     font-family: sans-serif;
 }
 
-.tools {
+#toolbar {
     padding: 1rem;
+}
+
+#active-tool-label {
+    font-size: 0.8em;
+    margin-left: 1rem;
+    font-weight: bold;
 }
 
 #canvas {

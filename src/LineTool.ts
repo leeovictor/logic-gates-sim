@@ -8,24 +8,26 @@ export class LineTool {
     private board: Board;
     private linePreview = new Line({ x: 0, y: 0 }, { x: 0, y: 0 });
 
+    isEnabled = false;
+
     constructor(board: Board) {
         this.board = board;
     }
 
     onEnabled() {
+        if (this.isEnabled) {
+            return;
+        }
         document.addEventListener('click', this.handleClick.bind(this));
         document.addEventListener('keydown', this.handleKeyDown.bind(this));
         document.addEventListener('mousemove', this.handleMouseMove.bind(this));
-    }
-
-    handleKeyDown(event: KeyboardEvent) {
-        if (event.key === 'Escape') {
-            this.start = null;
-            this.end = null;
-        }
+        this.isEnabled = true;
     }
 
     onDisabled() {
+        if (!this.isEnabled) {
+            return;
+        }
         this.start = null;
         this.end = null;
         document.removeEventListener('click', this.handleClick.bind(this));
@@ -34,6 +36,14 @@ export class LineTool {
             'mousemove',
             this.handleMouseMove.bind(this)
         );
+        this.isEnabled = false;
+    }
+
+    private handleKeyDown(event: KeyboardEvent) {
+        if (event.key === 'Escape') {
+            this.start = null;
+            this.end = null;
+        }
     }
 
     private handleMouseMove(event: MouseEvent) {
