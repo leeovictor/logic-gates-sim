@@ -5,9 +5,7 @@
 [] simple selection tool
   * consigo selecionar formas no canvas com click
     * translação da forma (move)
-    * deleção
-[] deleção de formas
-  * consigo excluir formas selecionadas
+    * deleção (`Del`)
 [] text tool
   * inserir texto simples no canvas
 [] box tool
