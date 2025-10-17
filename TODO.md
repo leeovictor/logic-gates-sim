@@ -3,6 +3,8 @@
 [x] line tool
   * adicionar uma linha no canvas quando a ferramenta está ativa
 [] simple selection tool
+  * implementar ToolManager
+  * implementar seleção de formas
   * consigo selecionar formas no canvas com click
     * translação da forma (move)
     * deleção (`Del`)
