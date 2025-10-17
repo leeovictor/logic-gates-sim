@@ -1,4 +1,4 @@
-import './style.css';
+import './ui/style.css';
 
 import { Board } from './Board';
 import { LineTool } from './LineTool';
