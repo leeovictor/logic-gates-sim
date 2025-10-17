@@ -1,9 +1,11 @@
 [x] configurar canvas
 
-[] line tool
+[x] line tool
   * adicionar uma linha no canvas quando a ferramenta está ativa
 [] simple selection tool
-  * consigo selecionar formas no canvas com click e movê-las
+  * consigo selecionar formas no canvas com click
+    * translação da forma (move)
+    * deleção
 [] deleção de formas
   * consigo excluir formas selecionadas
 [] text tool
