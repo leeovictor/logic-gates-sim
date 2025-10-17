@@ -60,7 +60,7 @@ export class LineTool {
         if (this.start !== null && this.end !== null) {
             this.linePreview.setStart(this.start);
             this.linePreview.setEnd(this.end);
-            this.board.lineDrawer.draw(this.linePreview);
+            this.board.getLineDrawer().draw(this.linePreview);
         }
     }
 }
