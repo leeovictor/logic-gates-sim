@@ -2,7 +2,7 @@ import './ui/style.css';
 
 import { Board } from './Board';
 import { LineTool } from './LineTool';
-import { Toolbar } from './ui/Toolbar';
+import { Toolbar, ToolName } from './ui/Toolbar';
 
 const canvas = document.getElementById('canvas') as HTMLCanvasElement;
 const toolbarEl = document.getElementById('toolbar') as HTMLElement;
@@ -12,9 +12,19 @@ const board = new Board(ctx);
 const lineTool = new LineTool(board);
 
 const toolbar = new Toolbar(toolbarEl);
-toolbar.onLineToolButtonClicked(() => {
-    lineTool.onEnabled();
-    canvas.style.cursor = 'crosshair';
+
+toolbar.onToolButtonClicked((toolName: ToolName) => {
+    console.log(`Tool button clicked: ${toolName}`);
+    switch (toolName) {
+        case ToolName.Line:
+            lineTool.onEnabled();
+            canvas.style.cursor = 'crosshair';
+            break;
+        case ToolName.Select:
+            lineTool.onDisabled();
+            canvas.style.cursor = 'default';
+            break;
+    }
 });
 
 function mainLoop() {

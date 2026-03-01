@@ -1,15 +1,19 @@
+export enum ToolName {
+    Line = 'Line',
+    Select = 'Select',
+}
+
 export class Toolbar {
     private toolbarEl: HTMLElement;
     private lineToolBtn!: HTMLButtonElement;
     private selectToolBtn!: HTMLButtonElement;
     private activeToolLabelEl!: HTMLDivElement;
 
-    private listeners: Array<() => void> = [];
+    private listeners: Array<(toolName: ToolName) => void> = [];
 
     constructor(toolbarElement: HTMLElement) {
         this.toolbarEl = toolbarElement;
 
-        // TODO: usar o ToolManager para gerenciar as ferramentas
         this.initialize();
     }
 
@@ -33,27 +37,30 @@ export class Toolbar {
             this.handleSelectToolClick.bind(this)
         );
 
-        this.updateActiveToolLabel('None');
+        this.setActiveToolLabel('None');
     }
 
-    private updateActiveToolLabel(toolName: string) {
+    private setActiveToolLabel(toolName: string) {
         this.activeToolLabelEl.textContent = `Active Tool: ${toolName}`;
     }
 
     private handleLineToolClick(ev: MouseEvent) {
         ev.stopPropagation();
-
-        // TODO: melhorar listeners para eventos de outros ferramentas (onToolClicked(toolName) ???)
-        this.updateActiveToolLabel('Line');
-        this.listeners.forEach((callback) => callback());
+        this.setActiveToolLabel('Line');
+        this.notifyListeners(ToolName.Line);
     }
 
-    private handleSelectToolClick() {
-        console.log('Select tool selected');
+    private handleSelectToolClick(ev: MouseEvent) {
+        ev.stopPropagation();
+        this.setActiveToolLabel('Select');
+        this.notifyListeners(ToolName.Select);
     }
 
-    onLineToolButtonClicked(callback: () => void) {
-        // TODO: melhorar listeners para eventos de outros ferramentas (onToolClicked(toolName) ???)
+    private notifyListeners(toolName: ToolName) {
+        this.listeners.forEach((callback) => callback(toolName));
+    }
+
+    onToolButtonClicked(callback: (toolName: ToolName) => void) {
         this.listeners.push(callback);
     }
 }
